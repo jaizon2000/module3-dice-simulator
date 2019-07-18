@@ -23,9 +23,8 @@ function playGame() {
     let displayFunds = document.getElementById('funds');
 
     let houseRand = Math.floor(Math.random() * 6) + 1;
-    let playerRand = Math.floor(Math.random() * 6) + 1;
-
-    checkFunds();
+    let playerRand = Math.floor(Math.random() * 6) + 1;  
+    
     // Display Die
     let house = document.getElementById('house-die');
     house.src = 'images/' + houseRand + '.png';
@@ -33,14 +32,15 @@ function playGame() {
     let player = document.getElementById('player-die');
     player.src = 'images/' + playerRand + '.png';
 
+    // Compare and Change funds
     compareDie(houseRand, playerRand);
-
-    displayFunds.innerHTML = funds;
-}
-function checkFunds() {
+    // After funds calculated, check if < 0
     if (funds <= 0) {
         document.getElementById('kicked').classList.remove('hide');
+        console.log('poor');
     }
+
+    displayFunds.innerHTML = funds;
 }
 
 
@@ -65,6 +65,7 @@ function Risk2() {
     risk1000Btn.classList.remove('damnActive');
     risk1MilBtn.classList.remove('gamblerActive');
 }
+
 function Risk5() {
     risk = true;
     riskNum = 5;
@@ -88,6 +89,7 @@ function Risk10() {
     risk5Btn.classList.remove('active');
     risk1MilBtn.classList.remove('gamblerActive');
 }
+
 function Risk1000() {
     risk = true;
     riskNum = 1000;
@@ -99,6 +101,7 @@ function Risk1000() {
     risk10Btn.classList.remove('active');
     risk1MilBtn.classList.remove('gamblerActive');
 }
+
 function Risk5000() {
     risk = true;
     riskNum = 5000;
@@ -111,6 +114,7 @@ function Risk5000() {
     risk1MilBtn.classList.remove('gamblerActive');
 
 }
+
 function Risk1Mil() {
     risk = true;
     riskNum = 1000000;
@@ -128,8 +132,11 @@ function Risk1Mil() {
 
 // Compares Value of Die
 function compareDie(houseRand, playerRand) {
-    let bet = Number(document.getElementById('bet-input').value);
 
+    let bet = Number(document.getElementById('bet-input').value);
+    if (bet == 0) {
+        bet == 1;
+    }
 
     if (playerRand > houseRand) {
 
@@ -138,6 +145,7 @@ function compareDie(houseRand, playerRand) {
         } else if (risk == true) {
             funds += bet * riskNum;
         }
+
     } else if (playerRand < houseRand) {
         if (risk == false) {
             funds -= bet;
@@ -187,6 +195,6 @@ function buyLoot() {
 
     // ADD IMG TO LOOT TABLE
     loot.innerHTML += '<img src="images/' + img + '">';
-    console.log('buy: ' + funds);
+    // console.log('buy: ' + funds);
 
 }
