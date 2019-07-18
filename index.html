@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Dice Simulator</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Cormorant+Unicase&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div id="kicked" class="hide">
+        <div>The Casino kicked you out.<br> Your debt got too large.</div>
+        <div id="refresh">Refresh the page to play again</div>
+    </div>
+
+    <h1>Dice Game</h1>
+    <h2>Beat the house and win your bet!</h2>
+    <hr>
+    <table align="center">
+        <tr>
+            <td>Funds: $<span id="funds">5000</span></td>
+            <td>Bet:<input id="bet-input" type="number"><button id="play-btn">PLAY</button></td>
+        </tr>
+        <tr>
+            <td colspan="2">Risk:
+                <button id='risk2'>2x</button>
+                <button id='risk5'>5x</button>
+                <button id='risk10'>10x</button>
+                <button id="risk1000">1000x</button>
+                <button id="risk5000">5000x</button>
+                <button id="risk1Mil">1,000,000x</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>House Roll</p>
+                <img id="house-die" src="images/question-mark.png">
+            </td>
+            <td>
+                <p>Your Roll</p>
+                <img id="player-die" src="images/question-mark.png">
+            </td>
+        </tr>
+    </table>
+
+    <button id="purchase-btn">Buy Riches & Luxury</button>
+    <h2>Your Loot</h2>
+    <p id="loot"></p>
+    <script src="main.js"></script>
+</body>
+
+</html>
